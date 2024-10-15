@@ -59,7 +59,7 @@ void main(List<String> args) {
   b1.pseudo = "Bot";
 
 
-// Boucle while affectée à mon joueur
+// Partie attaque bot affectée à mon joueur
   while (b1.sante > 0){
   readText("Appuyez sur entrée pour lancer les dés");
   scoreDes = lancerDes(j1.pseudo);
@@ -70,7 +70,7 @@ void main(List<String> args) {
   infoBot(b1.sante, b1.force);
 
   print("");
-// Boucle while affectée à mon bot
+// Partie attaque joueur affecté
   scoreDesB = lancerDesB(b1.pseudo);
   j1.degats(scoreDesB, b1.pseudo);
   print("Le joueur ${j1.pseudo} à perdu ${scoreDesB} hp il a maintenant ${j1.sante} hp");
@@ -85,12 +85,12 @@ void main(List<String> args) {
 }
 
 
-
+// Rappel des infos du joueur
 infoJoueur(String pseudo, int sante, int force){
   print("${pseudo} - Santé : ${sante}% - Force : ${force}");
 }
 
-
+// Rappel des infos du bot
 infoBot(int sante, int force){
   print("Bot - Santé : ${sante}% - Force : ${force}");
 }

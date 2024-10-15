@@ -60,7 +60,7 @@ void main(List<String> args) {
 
 
 // Partie attaque bot affectée à mon joueur
-  while (b1.sante > 0){
+  while (b1.sante > 0 && j1.sante > 0){
   readText("Appuyez sur entrée pour lancer les dés");
   scoreDes = lancerDes(j1.pseudo);
   b1.degats(scoreDes, j1.pseudo);
@@ -70,6 +70,7 @@ void main(List<String> args) {
   infoBot(b1.sante, b1.force);
 
   print("");
+
 // Partie attaque joueur affecté
   scoreDesB = lancerDesB(b1.pseudo);
   j1.degats(scoreDesB, b1.pseudo);

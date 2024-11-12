@@ -2,7 +2,7 @@
 import 'user_input.dart';
 import 'bot.dart';
 import 'dart:math';
-import 'joueur.dart';
+import 'joueur.dart';  
 
 // Initialisation du lancement des dès pour le joueur
 int lancerDes(String nomJoueur) {
@@ -20,21 +20,6 @@ int lancerDes(String nomJoueur) {
 
 }
 
-// Initialisation du lancement des dès pour le Bot
-int lancerDesB(String botNom) {
-    // Randomisateur parametré pour des dès 6 faces.
-    Random random = new Random();
-    int nbrAleatoireDes3 = random.nextInt(6) +1;
-
-    int nbrAleatoireDes4 = random.nextInt(6) +1;
-
-    int resultatb = nbrAleatoireDes3 + nbrAleatoireDes4;
-
-    print("${botNom} à lancé les dés et a obtenu ${resultatb}.");
-
-    return resultatb;
-
-}
 // Fonction principale
 void main(List<String> args) {
 
@@ -58,48 +43,47 @@ void main(List<String> args) {
   b1.sante = 100;
   b1.pseudo = "Bot";
 
+  void attaqueJoueur() {
+    readText("Appuyez sur entrée pour lancer les dés");
+    scoreDes = lancerDes(j1.pseudo);
+    b1.degats(scoreDes, j1.pseudo);
+  } 
+
+  void attaqueBot() {
+    scoreDesB = lancerDes(b1.pseudo);
+    j1.degats(scoreDesB, b1.pseudo);
+  }
 
 // Partie attaque bot affectée à mon joueur
   while (b1.sante > 0 && j1.sante > 0){
-  readText("Appuyez sur entrée pour lancer les dés");
-  scoreDes = lancerDes(j1.pseudo);
-  b1.degats(scoreDes, j1.pseudo);
-  print("Le bot à perdu ${scoreDes} hp il a maintenant ${b1.sante} hp");
-  
-  // Appel des procédures
-  infoBot(b1.sante, b1.force);
+  print("\n Début du tour ${round}.\n");
+  var boolValue = Random().nextBool();
 
-  print("");
+  if(boolValue){
+    attaqueJoueur();
+    print("");
+    attaqueBot();
+  } else {
+    attaqueBot();
+    print("");
+    attaqueJoueur();
+  } 
 
-// Partie attaque joueur affecté
-  scoreDesB = lancerDesB(b1.pseudo);
-  j1.degats(scoreDesB, b1.pseudo);
-  print("Le joueur ${j1.pseudo} à perdu ${scoreDesB} hp il a maintenant ${j1.sante} hp");
-
-  
-  // Appel des procédures
-  infoJoueur(j1.pseudo, j1.sante, j1.force);
-// Rajout du comptage des tours.
+  print("------------------------------------------");
   print("Vous avez fini le tour $round.");
+  j1.Infos();
+  b1.Infos();
+  print("------------------------------------------");
   round++;
+  }
+
+  print("Fin de partie");
+  if (!j1.IsAlive() && !b1.IsAlive()) {
+    print("Match nul !");
+  } else if (b1.IsAlive()) {
+    print("Bot a gagné la partie");
+  } else if (j1.IsAlive()) {
+    print("Joueur ${j1.pseudo} a gagné la partie");
   }
 }
 
-
-// Rappel des infos du joueur
-infoJoueur(String pseudo, int sante, int force){
-  print("${pseudo} - Santé : ${sante}% - Force : ${force}");
-}
-
-// Rappel des infos du bot
-infoBot(int sante, int force){
-  print("Bot - Santé : ${sante}% - Force : ${force}");
-}
-
-
-attaqueJoueur(Joueur aj) {
-  
-}
-attaqueBot(Bot ab) {
-
-}

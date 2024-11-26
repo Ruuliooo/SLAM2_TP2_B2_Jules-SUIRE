@@ -7,8 +7,8 @@ Ensuite, je dois implémenter un lancer de dés pour les deux utilisateurs, avec
 Le début du tour commence aléatoirement avec une fonction booléenne, qui choisi le joueur initialisé si True, et le bot si False. <br> <br>
 
 Voici ce que donne une victoire du joueur Jules:
-
- Début du tour 14.
+------------------------------------------
+Début du tour 14.
 
 Appuyez sur entrée pour lancer les dés
 
@@ -24,6 +24,7 @@ Infos Bot : Santé : 0 - Force : 1
 ------------------------------------------
 Fin de partie
 Joueur Jules a gagné la partie
+------------------------------------------
 ## Mise à jour
 Dernière mise à jour : ```13/11/2024```
  
